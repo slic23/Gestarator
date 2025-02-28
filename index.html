@@ -1,45 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/issam.css">
+    <title>Gestarator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .blocked {
+            opacity: 0.5;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg d-flex  justify-content-between  ">
-            <a class="navbar-brand ps-4">Gesterator</a>
-            <ul class="navbar-nav text-center pe-5 pareja">
-                <li class="nav-item active espacio">
-                    <a href="" class="nav-link">Inicio</a>
-                </li>
-                <li class="nav-item "><a href="" class="nav-link">Usuarios</a></li>
-                <li class="nav-item"><a href="" class="nav-link">Publicaciones</a></li>
-                <li class="nav-item"><a href="" class="nav-link">Crear Usuario</a></li>
-            </ul>
-            </nav>
-         
-
-
-            <main>
-
-                <div>
-                    <div><img src="imgs/User.png" alt=""></div>
-                    <div class="userContador"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gesterator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showHome()">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="toggleUsersTable()">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="togglePostsTable()">Publicaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showUserForm()">Crear Usuario</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="container mt-5" id="mainContent">
+        <div class="row text-center">
+            <div class="col-md-4 col-12 mb-3">
+                <div class="d-flex flex-column align-items-center p-3 border rounded">
+                    <h5>Usuarios</h5>
+                    <p class="fs-2" id="userCount">0</p>
                 </div>
-                <div>
-                    <div></div>
-                    <div></div>
+            </div>
+            <div class="col-md-4 col-12 mb-3">
+                <div class="d-flex flex-column align-items-center p-3 border rounded">
+                    <h5>Publicaciones</h5>
+                    <p class="fs-2" id="postCount">0</p>
                 </div>
-                <div>
-                    <div></div>
-                    <div></div>
+            </div>
+            <div class="col-md-4 col-12 mb-3">
+                <div class="d-flex flex-column align-items-center p-3 border rounded">
+                    <h5>Usuarios Bloqueados</h5>
+                    <p class="fs-2" id="blockedCount">0</p>
                 </div>
+            </div>
+        </div>
+    </main>
+    
+    <div class="container mt-5" id="usersTable" style="display: none;">
+        <h2>Lista de Usuarios</h2>
+        <button class="btn btn-primary mb-3" onclick="showUserForm()">Añadir Usuario</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="blocked">
+                    <td>Juan Pérez</td>
+                    <td>juan@example.com</td>
+                    <td>
+                        <button class="btn btn-warning" onclick="confirmAction('desbloquear', this)">Desbloquear</button>
+                        <button class="btn btn-danger" onclick="confirmAction('borrar', this)">Borrar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ana Gómez</td>
+                    <td>ana@example.com</td>
+                    <td>
+                        <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
+                        <button class="btn btn-danger" onclick="confirmAction('borrar', this)">Borrar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-            </main>
+    <div class="container mt-5" id="userForm" style="display: none;">
+        <h2>Formulario de Usuario</h2>
+        <form>
+            <input type="text" id="nombre" class="form-control mb-2" placeholder="Nombre">
+            <input type="text" id="apellido" class="form-control mb-2" placeholder="Apellido">
+            <input type="date" id="fechaNacimiento" class="form-control mb-2">
+            <input type="text" id="pais" class="form-control mb-2" placeholder="Pais de residencia">
+            <input type="email" id="email" class="form-control mb-2" placeholder="Email">
+            <input type="password" id="password" class="form-control mb-2" placeholder="Contraseña">
+            <input type="password" id="password2" class="form-control mb-2" placeholder="Repetir contraseña">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="button" class="btn btn-secondary" onclick="toggleUsersTable()">Cancelar</button>
+        </form>
+    </div>
 
-<script src="js/contadores.js"></script>
+    <div class="container mt-5" id="postsTable" style="display: none;">
+        <h2>Lista de Publicaciones</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mi primer post</td>
+                    <td>2024-02-10</td>
+                    <td>
+                        <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
+                        <button class="btn btn-primary" onclick="viewPost()">Ver</button>
+                        <button class="btn btn-primary" onclick="viewPost()">Desbloquear</button>
+                        <button class="btn btn-primary" onclick="viewPost()">eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mi primer post</td>
+                    <td>2024-02-10</td>
+                    <td>
+                        <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
+                        <button class="btn btn-primary" onclick="viewPost()">Ver</button>
+                        <button class="btn btn-primary" onclick="viewPost()">Desbloquear</button>
+                        <button class="btn btn-primary" onclick="viewPost()">eliminar</button>
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mi primer post</td>
+                    <td>2024-02-10</td>
+                    <td>
+                        <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
+                        <button class="btn btn-primary" onclick="viewPost()">Ver</button>
+                        <button class="btn btn-primary" onclick="viewPost()">Desbloquear</button>
+                        <button class="btn btn-primary" onclick="viewPost()">eliminar</button>
+
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function toggleUsersTable() {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('usersTable').style.display = 'block';
+            document.getElementById('userForm').style.display = 'none';
+            document.getElementById('postsTable').style.display = 'none';
+        }
+        
+        function showUserForm() {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('usersTable').style.display = 'none';
+            document.getElementById('userForm').style.display = 'block';
+            document.getElementById('postsTable').style.display = 'none';
+        }
+        
+        function togglePostsTable() {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('usersTable').style.display = 'none';
+            document.getElementById('userForm').style.display = 'none';
+            document.getElementById('postsTable').style.display = 'block';
+        }
+        
+        function confirmAction(action, element) {
+            if (confirm(`¿Seguro que quieres ${action} este elemento?`)) {
+                alert(`${action.charAt(0).toUpperCase() + action.slice(1)} exitoso.`);
+            }
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

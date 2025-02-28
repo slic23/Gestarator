@@ -1,15 +1,7 @@
-h1 {
-  background-color: black;
-}
-
-.espacio {
-  padding-left: 200px;
-}
-
-.pareja li {
-  padding: 0 2rem;
-}
-
 main {
-  padding-top: 10rem;
+  padding-top: 5em;
+}
+
+.imagen {
+  width: 130px;
 }/*# sourceMappingURL=issam.css.map */
