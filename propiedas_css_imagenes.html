@@ -1,15 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles\issam.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Gestarator</title>
+    <link href="styles/issam.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: start;
+        }
+        .imagenes1 {
+            max-width: 100%;
+            height: 300px;
+            display: block;
+            margin: 10px;
+        }
+        .object-fit-cover {
+            object-fit: cover;
+        }
+        .object-fit-contain {
+            object-fit: contain;
+        }
+        .object-fit-fill {
+            object-fit: fill;
+        }
+        .object-fit-scale-down {
+            object-fit: scale-down;
+        }
+    </style>
 </head>
 <body>
-    <h2>Propiedades de imagenes en CSS</h2>
-    
+    <h3>Propiedades CSS para Imagenes</h3>
+    <hr>
 
-    
+    <button class="butonPrincipal"><a href="index.html">Volver pagina principal</a></button>
+    <p>
+        Las propiedades CSS para imagenes nos permiten controlar como se muestran y ajustan las imagenes en nuestras paginas web.
+        La propiedad object-fit es especialmente util para controlar como una imagen debe redimensionarse para ajustarse a su contenedor.
+    </p>
+
+    <h4>Object-fit: Cover</h4>
+    <img class="imagenes1 object-fit-cover" src="imgsPub/neorealism.jpg" >
+    <p>
+        La imagen mantiene su relación de aspecto y cubre todo el contenedor, recortando las partes que sobresalen.
+        Es util cuando queremos que la imagen llene completamente su espacio sin deformarse.
+    </p>
+
+    <h4>Object-fit: Contain</h4>
+    <img class="imagenes1 object-fit-contain" src="imgsPub/neorealism.jpg">
+    <p>
+        La imagen mantiene su relación de aspecto y se ajusta dentro del contenedor sin recortes.
+        Puede dejar espacios en blanco pero muestra la imagen completa.
+    </p>
+
+    <h4>Object-fit: Fill</h4>
+    <img class="imagenes1 object-fit-fill" src="imgsPub/neorealism.jpg" >
+    <p>
+        La imagen se estira para llenar el contenedor, sin mantener su relación de aspecto.
+        Puede resultar en una imagen distorsionada pero ocupara todo el espacio disponible.
+    </p>
+
+    <h4>Object-fit: Scale-down</h4>
+    <img class="imagenes1 object-fit-scale-down" src="imgsPub/neorealism.jpg" >
+    <p>
+        Similar a contain, pero nunca aumentara el tamaño de la imagen mas alla de sus dimensiones originales.
+        Util para evitar que imagenes pequeñas se vean pixeladas.
+    </p>
+
 </body>
-</html>
+</html> 
