@@ -116,21 +116,20 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Mi primer post</td>
-                    <td>2024-02-10</td>
+                    <td>Filtros</td>
+                    <td>2025-03-03</td>
                     <td>
                         <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
                         <button class="btn btn-primary" onclick="viewPost()">Ver</button>
                         <button class="btn btn-primary" onclick="viewPost()">Desbloquear</button>
-                        <button class="btn btn-primary" onclick="viewPost()">eliminar</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>Mi primer post</td>
-                    <td>2024-02-10</td>
+                    <td>Imagenes y detalles de CSS</td>
+                    <td>2025-03-03</td>
                     <td>
                         <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
-                        <button class="btn btn-primary" onclick="viewPost()">Ver</button>
+                        <button class="btn btn-primary" onclick="window.location.href='propiedas_css_imagenes.html'">Ver</button>
                         <button class="btn btn-primary" onclick="viewPost()">Desbloquear</button>
                         <button class="btn btn-primary" onclick="viewPost()">eliminar</button>
 
@@ -138,13 +137,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Mi primer post</td>
+                    <td>Formatos Imagenes</td>
                     <td>2024-02-10</td>
                     <td>
                         <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
                         <button class="btn btn-primary" onclick="window.location.href='fotos.html'"> ver</button>
                         <button class="btn btn-primary" >Desbloquear</button>
-                        <button class="btn btn-primary" >eliminar</button>
 
 
                     </td>
@@ -152,6 +150,9 @@
             </tbody>
         </table>
     </div>
+
+
+
 
     <script>
         function toggleUsersTable() {
@@ -174,6 +175,8 @@
             document.getElementById('userForm').style.display = 'none';
             document.getElementById('postsTable').style.display = 'block';
         }
+
+
         
         function confirmAction(action, element) {
             if (confirm(`¿Seguro que quieres ${action} este elemento?`)) {
@@ -183,5 +186,10 @@
     </script>
     <script src="guardarDatos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p class="mb-0">Issam Ramdani, Gestarator &copy; All rights reserved</p>
+    </footer>
 </body>
 </html>

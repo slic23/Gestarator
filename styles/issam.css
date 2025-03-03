@@ -11969,6 +11969,16 @@ main {
   padding-top: 5em;
 }
 
-.imagen {
-  width: 130px;
+.imagenes {
+  width: 300px;
+}
+
+.bloqueado {
+  background-color: #e0e0e0;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }/*# sourceMappingURL=issam.css.map */

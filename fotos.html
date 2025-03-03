@@ -4,26 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestarator</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles\issam.min.css" rel="stylesheet">
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .imagenes {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 10px auto;
+    }
+  </style>
+  </style>
 </head>
 <body>
   <h3>Formato de imágenes</h3>
   <hr>
   <p>
-    Las imágenes que vemos en internet, detrás de ese contenido, están en una forma, es decir, con un estándar en el que se guarda esa información,<br> la cual, en general, es un mapa de bits formado por ceros y unos que definen cada bit en cuanto a color e intensidad.
+    Las imágenes que vemos en internet, detrás de ese contenido, están en una forma, es decir, con un estándar en el que se guarda esa información,<br> 
+    la cual, en general, es un mapa de bits formado por ceros y unos que definen cada bit en cuanto a color e intensidad.
     <br>
     Para ello, existen diferentes algoritmos que realizan este trabajo. <br> Algunos de estos algoritmos han dejado de usarse para dar paso a otros más eficientes, como veremos a continuación.
   </p>
 
-
-  <h4>jpg: </h4>
+  <h4>JPG / JPEG:</h4>
   <p>
-    El formato jpg surgio en los años 90, que reduce la compresion de la imagen usando <br>
-    un algoritmo que procesa esa informacion usando un metodo de comparacion que elimina los pixiles iguales
+    El formato JPG surgió en los años 90 y reduce la compresión de la imagen usando un algoritmo con pérdida,<br>
+    que procesa la información eliminando detalles imperceptibles para reducir el tamaño del archivo.
   </p>
+  <img class="imagenes" src="imgsPub/grito.jpg" alt="Ejemplo de JPG">
 
-  <img  class="imagenes"src="imgsPub/grito.jpg" alt="">
-  
-  <p></p>
+  <h4>PNG:</h4>
+  <p>
+    PNG es un formato sin pérdida que admite transparencias. Se usa principalmente en gráficos web, logotipos y elementos que necesitan un fondo transparente.
+  </p>
+  <img class="imagenes" src="" alt="Ejemplo de PNG">
+
+  <h4>WebP:</h4>
+  <p>
+    WebP es un formato desarrollado por Google que ofrece mejor compresión que JPG y PNG, con soporte para imágenes animadas y transparencia.
+  </p>
+  <img class="imagenes" src="" alt="Ejemplo de WebP">
+
+  <h4>AVIF:</h4>
+  <p>
+    AVIF es un formato basado en el códec AV1, que proporciona una alta compresión con mejor calidad que WebP y JPG, <br>
+    optimizado para la web y soportado en navegadores modernos.
+  </p>
+  <img class="imagenes" src="" alt="Ejemplo de AVIF">
+
+  <h4>SVG:</h4>
+  <p>
+    SVG es un formato vectorial que permite escalabilidad sin pérdida de calidad. Es ideal para íconos, logotipos y gráficos interactivos en la web.
+  </p>
+  <img class="imagenes" src="" alt="Ejemplo de SVG">
+
 </body>
 </html>
