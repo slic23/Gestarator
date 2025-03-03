@@ -39,19 +39,19 @@
             <div class="col-md-4 col-12 mb-3">
                 <div class="d-flex flex-column align-items-center p-3 border rounded">
                     <h5>Usuarios</h5>
-                    <p class="fs-2" id="userCount">0</p>
+                    <p class="fs-2" id="usuariosTotal">0</p>
                 </div>
             </div>
             <div class="col-md-4 col-12 mb-3">
                 <div class="d-flex flex-column align-items-center p-3 border rounded">
                     <h5>Publicaciones</h5>
-                    <p class="fs-2" id="postCount">0</p>
+                    <p class="fs-2" id="numeroPub">3</p>
                 </div>
             </div>
             <div class="col-md-4 col-12 mb-3">
                 <div class="d-flex flex-column align-items-center p-3 border rounded">
                     <h5>Usuarios Bloqueados</h5>
-                    <p class="fs-2" id="blockedCount">0</p>
+                    <p class="fs-2" id="usuariosBloqueados">0</p>
                 </div>
             </div>
         </div>
@@ -64,25 +64,27 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>País</th>
                     <th>Email</th>
-                    <th>Acciones</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="blocked">
-                    <td>Juan Pérez</td>
-                    <td>juan@example.com</td>
+                    <td>Issam</td>
+                    <td>Issam@example.com</td>
                     <td>
-                        <button class="btn btn-warning" onclick="confirmAction('desbloquear', this)">Desbloquear</button>
-                        <button class="btn btn-danger" onclick="confirmAction('borrar', this)">Borrar</button>
+                        <button class="btn btn-warning" onclick="bloquearUsuario(this, 0)">Desbloquear</button>
+                        <button class="btn btn-danger" onclick="eliminarUsuario(0)">Borrar</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>Ana Gómez</td>
-                    <td>ana@example.com</td>
+                    <td>ramdani</td>
+                    <td>ramdani@example.com</td> 
                     <td>
-                        <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
-                        <button class="btn btn-danger" onclick="confirmAction('borrar', this)">Borrar</button>
+                        <button class="btn btn-secondary" onclick="bloquearUsuario(this, 1)">Bloquear</button>
+                        <button class="btn btn-danger" onclick="eliminarUsuario(1)">Borrar</button>
                     </td>
                 </tr>
             </tbody>
@@ -99,7 +101,7 @@
             <input type="email" id="email" class="form-control mb-2" placeholder="Email">
             <input type="password" id="password" class="form-control mb-2" placeholder="Contraseña">
             <input type="password" id="password2" class="form-control mb-2" placeholder="Repetir contraseña">
-            <button type="button" class="btn btn-success" onclick="crearUsuario()">Guardar</button>
+            <button type="button" class="btn btn-success" onclick="guardarUsuario()">Guardar</button>
             <button type="button" class="btn btn-secondary" onclick="toggleUsersTable()">Cancelar</button>
         </form>
     </div>
@@ -119,32 +121,24 @@
                     <td>Filtros</td>
                     <td>2025-03-03</td>
                     <td>
-                        <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
-                        <button class="btn btn-primary" onclick="viewPost()">Ver</button>
-                        <button class="btn btn-primary" onclick="viewPost()">Desbloquear</button>
+                        <button class="btn btn-secondary" onclick="this.closest('tr').classList.toggle('bloqueadasPub'); this.textContent = this.closest('tr').classList.contains('bloqueadasPub') ? 'Desbloquear' : 'Bloquear';">Bloquear</button>
+                        <button class="btn btn-primary" onclick="window.location.href='filtros.html'">Ver</button>
                     </td>
                 </tr>
                 <tr>
                     <td>Imagenes y detalles de CSS</td>
                     <td>2025-03-03</td>
                     <td>
-                        <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
+                        <button class="btn btn-secondary" onclick="this.closest('tr').classList.toggle('bloqueadasPub'); this.textContent = this.closest('tr').classList.contains('bloqueadasPub') ? 'Desbloquear' : 'Bloquear';">Bloquear</button>
                         <button class="btn btn-primary" onclick="window.location.href='propiedas_css_imagenes.html'">Ver</button>
-                        <button class="btn btn-primary" onclick="viewPost()">Desbloquear</button>
-                        <button class="btn btn-primary" onclick="viewPost()">eliminar</button>
-
-
                     </td>
                 </tr>
                 <tr>
                     <td>Formatos Imagenes</td>
                     <td>2024-02-10</td>
                     <td>
-                        <button class="btn btn-secondary" onclick="confirmAction('bloquear', this)">Bloquear</button>
-                        <button class="btn btn-primary" onclick="window.location.href='fotos.html'"> ver</button>
-                        <button class="btn btn-primary" >Desbloquear</button>
-
-
+                        <button class="btn btn-secondary" onclick="this.closest('tr').classList.toggle('bloqueadasPub'); this.textContent = this.closest('tr').classList.contains('bloqueadasPub') ? 'Desbloquear' : 'Bloquear';">Bloquear</button>
+                        <button class="btn btn-primary" onclick="window.location.href='fotos.html'">Ver</button>
                     </td>
                 </tr>
             </tbody>
@@ -155,6 +149,8 @@
 
 
     <script>
+
+        
         function toggleUsersTable() {
             document.getElementById('mainContent').style.display = 'none';
             document.getElementById('usersTable').style.display = 'block';
@@ -174,6 +170,13 @@
             document.getElementById('usersTable').style.display = 'none';
             document.getElementById('userForm').style.display = 'none';
             document.getElementById('postsTable').style.display = 'block';
+        }
+
+        function showHome(){
+            document.getElementById('mainContent').style.display = 'block';
+            document.getElementById('usersTable').style.display = 'none';
+            document.getElementById('userForm').style.display = 'none';
+            document.getElementById('postsTable').style.display = 'none';
         }
 
 

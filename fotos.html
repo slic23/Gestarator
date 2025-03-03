@@ -1,68 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestarator</title>
-  <link href="styles\issam.min.css" rel="stylesheet">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestarator - Formatos de Imagen</title>
+    <link href="styles/issam.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    .imagenes {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 10px auto;
-    }
-  </style>
-  </style>
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .btn-volver {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .formato-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .formato-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .imagenes1 {
+            max-width: 100%;
+            height: 300px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .imagenes {
+            max-width: 100%;
+            height: 300px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .image2 {
+            max-width: 100%;
+            height: 300px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .descripcion {
+            text-align: justify;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .formato-section {
+                padding: 15px;
+            }
+            
+            .imagenes1, .imagenes, .image2 {
+                height: auto;
+                margin: 10px auto;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h3>Formato de imágenes</h3>
-  <hr>
-  <p>
-    Las imágenes que vemos en internet, detrás de ese contenido, están en una forma, es decir, con un estándar en el que se guarda esa información,<br> 
-    la cual, en general, es un mapa de bits formado por ceros y unos que definen cada bit en cuanto a color e intensidad.
-    <br>
-    Para ello, existen diferentes algoritmos que realizan este trabajo. <br> Algunos de estos algoritmos han dejado de usarse para dar paso a otros más eficientes, como veremos a continuación.
-  </p>
+    <div class="container">
+        <div class="header">
+            <h1 class="formato-title">Formato de imágenes</h1>
+            <a href="index.html" class="btn btn-primary btn-volver">Volver a página principal</a>
+        </div>
 
-  <h4>JPG / JPEG:</h4>
-  <p>
-    El formato JPG surgió en los años 90 y reduce la compresión de la imagen usando un algoritmo con pérdida,<br>
-    que procesa la información eliminando detalles imperceptibles para reducir el tamaño del archivo.
-  </p>
-  <img class="imagenes" src="imgsPub/grito.jpg" alt="Ejemplo de JPG">
+        <div class="formato-section">
+            <p class="descripcion">
+                Las imágenes que vemos en internet, detrás de ese contenido, están en una forma, es decir, con un estándar en el que se guarda esa información.
+                La cual, en general, es un mapa de bits formado por ceros y unos que definen cada bit en cuanto a color e intensidad.
+                Para ello, existen diferentes algoritmos que realizan este trabajo. Algunos de estos algoritmos han dejado de usarse para dar paso a otros más eficientes, como veremos a continuación.
+            </p>
+        </div>
 
-  <h4>PNG:</h4>
-  <p>
-    PNG es un formato sin pérdida que admite transparencias. Se usa principalmente en gráficos web, logotipos y elementos que necesitan un fondo transparente.
-  </p>
-  <img class="imagenes" src="" alt="Ejemplo de PNG">
+        <div class="formato-section">
+            <h2 class="formato-title">JPG / JPEG</h2>
+            <img class="imagenes1" src="imgsPub/grito.jpg" alt="Ejemplo de JPG">
+            <p class="descripcion">
+                El formato JPG surgió en los años 90 y reduce la compresión de la imagen usando un algoritmo con pérdida,
+                que procesa la información eliminando detalles imperceptibles para reducir el tamaño del archivo. Se caracteriza por su soporte universal.
+                Es decir, es compatible con todos los programas y navegadores.
+                Admite una cantidad increíble de colores, unos 16.7 millones de colores con 24 bits de profundidad.
+            </p>
+        </div>
 
-  <h4>WebP:</h4>
-  <p>
-    WebP es un formato desarrollado por Google que ofrece mejor compresión que JPG y PNG, con soporte para imágenes animadas y transparencia.
-  </p>
-  <img class="imagenes" src="" alt="Ejemplo de WebP">
+        <div class="formato-section">
+            <h2 class="formato-title">PNG</h2>
+            <img class="imagenes" src="imgsPub/pngfoto.png" alt="Ejemplo de PNG">
+            <p class="descripcion">
+                Como su nombre indica, Portable Network Graphics, a diferencia del <em>JPG</em> es un formato sin pérdida de calidad y detalles. En otras palabras, no usa
+                un algoritmo de compresión, por eso no se recomienda su uso si las imágenes muestran muchos detalles. Características generales de este es que admite
+                transparencias, puede representar hasta 16 colores, no admite animaciones. Con lo dicho anteriormente, no se recomienda para las fotografías.
+            </p>
+        </div>
 
-  <h4>AVIF:</h4>
-  <p>
-    AVIF es un formato basado en el códec AV1, que proporciona una alta compresión con mejor calidad que WebP y JPG, <br>
-    optimizado para la web y soportado en navegadores modernos.
-  </p>
-  <img class="imagenes" src="" alt="Ejemplo de AVIF">
+        <div class="formato-section">
+            <h2 class="formato-title">GIF</h2>
+            <img class="image2" src="imgsPub/pelifav.gif" alt="Ejemplo de GIF animado">
+            <p class="descripcion">
+                El formato GIF es ideal para animaciones simples y gráficos con áreas de color sólido.
+                Soporta transparencia y animación, pero está limitado a 256 colores. Tiene una compresión sin perdida usa el algoritmo para ello LZL 
+                soporta animaciones puede usar multiples imagenes, 
+                tambien hay que destacar que usa trasnperencias. Es compatible con todos los navegadores, aplicaciones
+            </p>
+        </div>
+    </div>
 
-  <h4>SVG:</h4>
-  <p>
-    SVG es un formato vectorial que permite escalabilidad sin pérdida de calidad. Es ideal para íconos, logotipos y gráficos interactivos en la web.
-  </p>
-  <img class="imagenes" src="" alt="Ejemplo de SVG">
-
+    <div class="formato-section">
+      <h2 class="formato-title">vg</h2>
+      <img class="image2" src="imgsPub/umberto_D.png" alt="Ejemplo de GIF animado">
+      <p class="descripcion">
+         
+      </p>
+  </div>
+</div>
+    
 </body>
 </html>

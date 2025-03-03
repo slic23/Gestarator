@@ -13,9 +13,7 @@ function mostrarUsuarios() {
             <td>${usuario.pais}</td>
             <td>${usuario.email}</td>
             <td>
-                <button class="btn btn-danger" onclick="eliminarUsuario(${index})">Borrar</button>
-            </td>
-            <td>
+                <button class="btn btn-danger me-2" onclick="eliminarUsuario(${index})">Borrar</button>
                 <button class="btn ${usuario.bloqueado ? 'btn-secondary' : 'btn-warning'}" 
                         onclick="bloquearUsuario(this, ${index})">
                     ${usuario.bloqueado ? 'Bloqueado' : 'Bloquear'}
@@ -61,6 +59,53 @@ function eliminarUsuario(index) {
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
         mostrarUsuarios();
     }
+}
+
+function guardarUsuario() {
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+    const pais = document.getElementById('pais').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const password2 = document.getElementById('password2').value;
+
+    if (!nombre || !apellido || !fechaNacimiento || !pais || !email || !password || !password2) {
+        alert('Por favor, rellena todos los campos');
+        return;
+    }
+
+    if (password !== password2) {
+        alert('Las contraseñas no coinciden');
+        return;
+    }
+
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    
+    const nuevoUsuario = {
+        nombre,
+        apellido,
+        fecha: fechaNacimiento,
+        pais,
+        email,
+        password,
+        bloqueado: false
+    };
+
+    usuarios.push(nuevoUsuario);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+    document.getElementById('nombre').value = '';
+    document.getElementById('apellido').value = '';
+    document.getElementById('fechaNacimiento').value = '';
+    document.getElementById('pais').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('password2').value = '';
+
+    alert('Usuario guardado correctamente');
+    toggleUsersTable();
+    mostrarUsuarios();
 }
 
 window.onload = mostrarUsuarios;

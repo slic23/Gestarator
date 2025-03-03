@@ -11977,6 +11977,12 @@ main {
   background-color: #e0e0e0;
 }
 
+.image2 {
+  max-width: 100%;
+  width: 20em;
+  height: 10em;
+}
+
 footer {
   position: absolute;
   bottom: 0;

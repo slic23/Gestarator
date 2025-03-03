@@ -1,32 +1,23 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 
-
-
 main {
     padding-top: 5em;
 }
 
-
 .imagenes {
     width: 300px
 }
+
 .bloqueado {
     background-color: #e0e0e0;
 }
 
-.image2 {
-    max-width: 100%;
-    width: 20em;
-    height: 10em;
-    
+.bloqueadasPub {
+    opacity: 0.5;
 }
-
-
 
 footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    
-    
-}
+} 
